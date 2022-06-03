@@ -1,12 +1,14 @@
 package practica8;
 
+import objetos.Cuenta;
+
 public abstract class Figura {
 	protected float maximaSuperficie;
 	private String nombre;
 	
 	public Figura() {
 		super();
-		this.nombre = "Cuadrado";
+		this.nombre = "Figura";
 		this.maximaSuperficie = 10;
 	}	
 	
@@ -20,29 +22,22 @@ public abstract class Figura {
 	}
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Float.floatToIntBits(maximaSuperficie);
-		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		return result;
+		return (int)maximaSuperficie + (int)nombre.hashCode();
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (!(obj instanceof Figura))
-			return false;
-		Figura other = (Figura) obj;
-		if (Float.floatToIntBits(maximaSuperficie) != Float.floatToIntBits(other.maximaSuperficie))
-			return false;
-		if (nombre == null) {
-			if (other.nombre != null)
-				return false;
-		} else if (!nombre.equals(other.nombre))
-			return false;
-		return true;
+		boolean bln =false;
+		if(obj instanceof Cuenta){
+			//downcast
+			 int i =134;
+			 //upcast es automatico
+			long l = i;
+			
+			Figura fig = (Figura)obj;					
+			bln = maximaSuperficie == fig.getMaximaSuperficie() &&
+			      nombre  == fig.getNombre();	
+		}
+		return bln;
 	}
 
 	public float getMaximaSuperficie() {

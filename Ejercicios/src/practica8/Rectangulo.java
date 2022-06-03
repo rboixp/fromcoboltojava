@@ -5,24 +5,20 @@ public class Rectangulo extends Figura{
 	private float base;
 	
 	public Rectangulo() {
-		super("Pepe");
+		super("Rectangulo");
 		this.altura = 2f;
 		this.base = 1f;
 	}	
 	
-	public Rectangulo(String nombre) {
-		super(nombre);
-		this.altura = 2f;
-		this.base = 1f;
-	}		
-	public Rectangulo(String nombre, float altura, float base) {
-		super(nombre);
+		
+	public Rectangulo( float altura, float base) {
+		super("Rectangulo");
 		this.altura = altura;
 		this.base = base;
 	}
 	@Override
 	public float calcularPerimetro() {
-		return 2f*base;
+		return 2f*base + 2f*altura;
 	}
 	 @Override
 	public float calcularSuperficie() {
@@ -31,32 +27,41 @@ public class Rectangulo extends Figura{
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Float.floatToIntBits(altura);
-		result = prime * result + Float.floatToIntBits(base);
-		return result;
+		return super.hashCode() + (int)base + (int)altura;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (!(obj instanceof Rectangulo))
-			return false;
-		Rectangulo other = (Rectangulo) obj;
-		if (Float.floatToIntBits(altura) != Float.floatToIntBits(other.altura))
-			return false;
-		if (Float.floatToIntBits(base) != Float.floatToIntBits(other.base))
-			return false;
-		return true;
+		return super.equals(obj) 			&&
+				obj instanceof Rectangulo 		&&
+				base == ((Rectangulo)obj).getBase() &&
+				altura == ((Rectangulo)obj).getAltura();
 	}
 
 	@Override
 	public String toString() {
-		return "Rectangulo [altura=" + altura + ", base=" + base + ", toString()=" + super.toString() + "]";
+    	StringBuilder sb = new StringBuilder(super.toString());
+    	sb.append(",base=");
+    	sb.append(base);
+    	sb.append(",altura=");
+    	sb.append(altura);
+    	return sb.toString();
+	}
+
+	public float getAltura() {
+		return altura;
+	}
+
+	public void setAltura(float altura) {
+		this.altura = altura;
+	}
+
+	public float getBase() {
+		return base;
+	}
+
+	public void setBase(float base) {
+		this.base = base;
 	}
 	
 

@@ -3,12 +3,12 @@ package practica8;
 public class Cuadrado extends Figura{
 	private float lado;
 
-	public Cuadrado(String nombre, float lado) {
-		super(nombre);
+	public Cuadrado( float lado) {
+		super("Cuadrado");
 		this.lado = lado;
 	}
 	public Cuadrado() {
-		super("Pepe");
+		super("Cuadrado");
 		this.lado = 2f;
 	}
 	public float getLado() {
@@ -19,32 +19,25 @@ public class Cuadrado extends Figura{
 	}
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Float.floatToIntBits(lado);
-		return result;
+		return super.hashCode() + (int)lado;
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (!(obj instanceof Cuadrado))
-			return false;
-		Cuadrado other = (Cuadrado) obj;
-		if (Float.floatToIntBits(lado) != Float.floatToIntBits(other.lado))
-			return false;
-		return true;
+		return super.equals(obj) 			&&
+				obj instanceof Cuadrado 		&&
+				lado == ((Cuadrado)obj).getLado();
 	}
 	@Override
 	public String toString() {
-		return "Cuadrado [lado=" + lado + ", getLado()=" + getLado() + "]";
+    	StringBuilder sb = new StringBuilder(super.toString());
+    	sb.append(",lado=");
+    	sb.append(lado);
+    	return sb.toString();
 	}
 	
 	 @Override
 	public float calcularPerimetro() {
-		return 2f*lado;
+		return 4f*lado;
 	}
 	 @Override
 	public float calcularSuperficie() {

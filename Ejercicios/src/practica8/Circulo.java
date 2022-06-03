@@ -1,5 +1,7 @@
 package practica8;
 
+import objetos.CajaDeAhorro;
+
 public class Circulo extends Figura   {
 	private float radio;
 
@@ -9,36 +11,30 @@ public class Circulo extends Figura   {
 		this.radio = 20f;
 	}	
 	
-	public Circulo(String nombre , float radio) {
-		super(nombre);
+	public Circulo( float radio) {
+		super("Circulo");
 		this.radio = radio;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Float.floatToIntBits(radio);
-		return result;
+		return super.hashCode() + (int)radio;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (!(obj instanceof Circulo))
-			return false;
-		Circulo other = (Circulo) obj;
-		if (Float.floatToIntBits(radio) != Float.floatToIntBits(other.radio))
-			return false;
-		return true;
+		return super.equals(obj) 			&&
+				obj instanceof Circulo 		&&
+				radio == ((Circulo)obj).getRadio();
 	}
 
 	@Override
 	public String toString() {
-		return "Circulo [radio=" + radio + ", toString()=" + super.toString() + "]";
+    	StringBuilder sb = new StringBuilder(super.toString());
+    	sb.append(",radio=");
+    	sb.append(radio);
+    	return sb.toString();
+	
 	}
 
 	public float getRadio() {
@@ -50,11 +46,11 @@ public class Circulo extends Figura   {
 	}
 	 @Override
 	public float calcularPerimetro() {
-		return 2f*3.1415f*radio;
+		return 2f*(float)Math.PI*radio;
 	}
 	 @Override
 	public float calcularSuperficie() {
-		return 3.1415f*radio*radio;
+		return (float)Math.PI*radio*radio;
 	}
 	
 
