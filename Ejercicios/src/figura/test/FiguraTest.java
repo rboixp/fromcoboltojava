@@ -107,8 +107,8 @@ public class FiguraTest {
 	
 	@Test
 	public void figVacia() {
-		System.out.println(figVacia.getMaximaSuperficie());
-		assertEquals(100, figVacia.getMaximaSuperficie());
+		System.out.println(figVacia.calcularSuperficie());
+		assertTrue(figVacia.getMaximaSuperficie() - 24 < 1);
 	}
 
 }

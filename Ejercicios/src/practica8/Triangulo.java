@@ -7,9 +7,9 @@ public class Triangulo extends Figura {
 	
 	 public Triangulo() {
 		super("Triangulo");
-		this.lado1 = 1f;
-		this.lado2 = 2f;
-		this.lado3 = 3f;
+		this.lado1 = 5f;
+		this.lado2 = 10f;
+		this.lado3 = 10f;
 	}	
 	
 	 public Triangulo(float lado1, float lado2, float lado3)  {
@@ -27,6 +27,8 @@ public class Triangulo extends Figura {
 	 @Override
 	public float calcularSuperficie() {
 		 float s = calcularPerimetro()/2f;
+		 System.out.println("s= " +s );
+		 System.out.println("result= " +Math.sqrt((s* (s-lado1) * (s-lado2)* (s-lado3))) );
 		return (float) Math.sqrt((s* (s-lado1) * (s-lado2)* (s-lado3)));
 	 }
 
